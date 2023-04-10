@@ -26,7 +26,7 @@ public class RadioTest {
     @Test
     public void nextRadioStationEquallyMax() {
         Radio radio = new Radio(10);
-        radio.setCurrentRadioStation(10);
+        radio.setCurrentRadioStation(11);
         radio.nextRadioStation();
         int expected = 0;
         int actual = radio.getCurrentRadioStation();
@@ -36,9 +36,9 @@ public class RadioTest {
     @Test
     public void nextRadioStationHigherMax() {
         Radio radio = new Radio(10);
-        radio.setCurrentRadioStation(11);
+        radio.setCurrentRadioStation(9);
         radio.nextRadioStation();
-        int expected = 1;
+        int expected = 0;
         int actual = radio.getCurrentRadioStation();
 
         Assertions.assertEquals(expected, actual);
