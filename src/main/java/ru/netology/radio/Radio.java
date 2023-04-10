@@ -1,40 +1,47 @@
 package ru.netology.radio;
+
 public class Radio {
     private int currentRadioStation;
     private int currentVolume;
+    private int maxRadioStation;
 
-    public void setCurrentRadioStation(int currentRadioStation) {
-
-        if (currentRadioStation < 0) {
-            currentRadioStation = 9;
-        }
-        if (currentRadioStation > 9) {
-            currentRadioStation = 0;
-        }
-        this.currentRadioStation = currentRadioStation;
-
+    public Radio() {
+        maxRadioStation = 9;
     }
 
-    public void nextRadioStation() {
-        currentRadioStation = currentRadioStation + 1;
-        if (currentRadioStation > 9) {
-            currentRadioStation = 0;
-
-        }
-
-    }
-
-    public void prevRadioStation() {
-        currentRadioStation = currentRadioStation - 1;
-        if (currentRadioStation < 0) {
-            currentRadioStation = 9;
-
-        }
-
+    public Radio(int maxRadioStation) {
+        this.maxRadioStation = maxRadioStation;
     }
 
     public int getCurrentRadioStation() {
         return currentRadioStation;
+    }
+
+
+    public void nextRadioStation() {
+        if (currentRadioStation < maxRadioStation) {
+            currentRadioStation = currentRadioStation + 1;
+        } else currentRadioStation = 0;
+
+    }
+
+    public void prevRadioStation() {
+        if (currentRadioStation > 0) {
+            currentRadioStation = currentRadioStation - 1;
+        } else currentRadioStation = 9;
+    }
+
+
+    public void setCurrentRadioStation(int currentRadioStation) {
+
+        if (currentRadioStation > maxRadioStation) {
+            return;
+        }
+        if (currentRadioStation < 0) {
+            return;
+        }
+        this.currentRadioStation = currentRadioStation;
+
     }
 
 
@@ -53,7 +60,7 @@ public class Radio {
     public void increaseVolume() {
         currentVolume = currentVolume + 1;
         if (currentVolume > 100) {
-            currentVolume =100;
+            currentVolume = 100;
 
         }
     }
@@ -69,6 +76,7 @@ public class Radio {
         return currentVolume;
     }
 }
+
 
 
 
